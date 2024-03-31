@@ -20,6 +20,7 @@
     margin-top: 10px;
 }
 .product-info__name {
+    margin: 0;
     font-size: 18px;
     font-weight: bold;
 }
