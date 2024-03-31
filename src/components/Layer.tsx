@@ -12,7 +12,7 @@ export const Layer = () => {
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.ctrlKey && event.key === 'Escape') {
+      if (event.key === 'Escape') {
         setShow(false);
         localStorage.removeItem('darkMode');
       }
