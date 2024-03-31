@@ -1,5 +1,6 @@
 import { toast } from 'react-toastify';
 import { Header } from '@/components/Header.tsx';
+import { SkipLink } from '@/components/SkipLink.tsx';
 import { PRODUCTS } from '@/constants/products.ts';
 
 const addToCart = (productId: number) => {
@@ -20,9 +21,10 @@ const addToCart = (productId: number) => {
 
 const ProductsPage = () => (
   <>
+    <SkipLink href="#main">본문 바로가기</SkipLink>
     <Header />
 
-    <section className="product-container">
+    <section className="product-container" id="main">
       {PRODUCTS.sort(() => Math.random() - 0.5).map((product) => (
         <div className="product-item" key={product.id}>
           <div className="product-image">
@@ -30,12 +32,12 @@ const ProductsPage = () => (
           </div>
           <div className="flex justify-between w-280 p-5">
             <div className="product-info flex flex-col">
-              <span className="product-info__name" tabIndex={0}>
+              <h3 className="product-info__name" tabIndex={0}>
                 {product.name}
-              </span>
-              <span className="product-info__price mt-10" tabIndex={0}>
+              </h3>
+              <p className="product-info__price mt-10" tabIndex={0}>
                 {product.price.toLocaleString()}원
-              </span>
+              </p>
             </div>
             <div className="product-buttons">
               <button className="product-button" aria-label="좋아요">

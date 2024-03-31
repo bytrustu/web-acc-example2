@@ -187,3 +187,19 @@
 .border {
     border: 1px solid #dddddd;
 }
+
+.focus {
+    outline: none;
+}
+
+.focus:focus {
+    border: 1px solid #000000;
+}
+
+.focus-children * {
+    outline: none;
+}
+
+.focus-children *:focus {
+    border: 1px solid #000000;
+}

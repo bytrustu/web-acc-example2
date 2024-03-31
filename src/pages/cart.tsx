@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Header from '@/components/Header';
 import { Modal } from '@/components/Modal.tsx';
+import { SkipLink } from '@/components/SkipLink.tsx';
 import { PRODUCTS } from '@/constants';
 
 const initializeCart = () => {
@@ -64,9 +65,10 @@ const CartPage = () => {
 
   return (
     <>
+      <SkipLink href="#main">본문 바로가기</SkipLink>
       {isModalOpen && <Modal cartItems={cartItems} onOrderComplete={completeOrder} />}
       <Header />
-      <section className="cart-section">
+      <section className="cart-section" id="main">
         <div className="flex">
           <section className="cart-left-section">
             {cartItems.map((product) => (
@@ -92,6 +94,7 @@ const CartPage = () => {
                       className="number-input"
                       value={product.quantity}
                       min={1}
+                      aria-label="수량"
                       onKeyDown={(e) => handleKeyDown(e, product.id)}
                     />
                     <div>
@@ -125,7 +128,11 @@ const CartPage = () => {
                 </span>
               </div>
               <div className="flex-center mt-30 mx-10">
-                <button className="primary-button flex-center" disabled={disabledOrderButton} onClick={handleOrder}>
+                <button
+                  className="primary-button flex-center focus"
+                  disabled={disabledOrderButton}
+                  onClick={handleOrder}
+                >
                   주문하기({cartItems.length}개)
                 </button>
               </div>
